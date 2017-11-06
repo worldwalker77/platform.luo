@@ -353,7 +353,7 @@ public class HttpClientUtils {
         }  
         String requestContent = sb.toString();
         requestContent = requestContent.substring(0, requestContent.lastIndexOf("&"));  
-        
+        System.out.println(requestContent);
         byte[] bypes = requestContent.getBytes("gbk");  
         conn.getOutputStream().write(bypes);// 输入参数  
         InputStream inStream=conn.getInputStream();  

@@ -33,7 +33,7 @@ public class PlatFormRpcImpl implements PlatFormRpc{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		PlatFormLoginResponse platFormLoginResponse = JsonUtil.toObject(loginRes, PlatFormLoginResponse.class);
+//		PlatFormLoginResponse platFormLoginResponse = JsonUtil.toObject(loginRes, PlatFormLoginResponse.class);
 		
 		return 0;
 	}
