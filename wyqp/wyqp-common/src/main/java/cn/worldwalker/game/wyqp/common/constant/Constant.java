@@ -68,7 +68,17 @@ public class Constant {
 	
 	public final static String deductionDiamo = "http://119.23.155.237:8081/UserService/DeductionDiamo/post.getway?responseformat=json&t=201711011904100000";
 	
-	public final static String key = CustomizedPropertyConfigurer.getContextProperty("key");// 默认值 "1234567890qwertyuiop";
+	public final static String key = CustomizedPropertyConfigurer.getContextProperty("luozong.key");// 默认值 "1234567890qwertyuiop";
 	
-    public final static String snkey = CustomizedPropertyConfigurer.getContextProperty("snkey");//默认值 "asdfghjklzxcvbnmpoiuytrewq";
+    public final static String snkey = CustomizedPropertyConfigurer.getContextProperty("luozong.snkey");//默认值 "asdfghjklzxcvbnmpoiuytrewq";
+    
+    public final static String luozongGameId = CustomizedPropertyConfigurer.getContextProperty("luozong.gameid");
+    
+    public final static String luozongGamename = CustomizedPropertyConfigurer.getContextProperty("luozong.gamename");
+    
+    public final static String luozongApplicationid = CustomizedPropertyConfigurer.getContextProperty("luozong.applicationid");
+    
+    public final static String luozongApplicationname = CustomizedPropertyConfigurer.getContextProperty("luozong.applicationname");
+    
+    public final static String luozongPort = CustomizedPropertyConfigurer.getContextProperty("luozong.port");
 }

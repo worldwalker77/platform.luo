@@ -504,7 +504,7 @@ public class NnGameService extends BaseGameService{
 		roomInfo.getPlayerList().add(player);
 		roomInfo.getPlayerList().add(player1);
 		
-//		if (roomInfo.getCurGame() == 1) {
+		if (roomInfo.getCurGame() == 1) {
 //			if (redisOperationService.isLoginFuseOpen()) {
 //				log.info("扣除房卡开始===============");
 //				try {
@@ -519,7 +519,7 @@ public class NnGameService extends BaseGameService{
 //				}
 //				log.info("扣除房卡结束===============");
 //			}
-//		}
+		}
 		
 	}
 	

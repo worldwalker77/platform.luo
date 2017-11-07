@@ -2,7 +2,6 @@ package cn.worldwalker.game.wyqp.common.service;
 
 import io.netty.channel.ChannelHandlerContext;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,12 +14,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.httpclient.Header;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +40,7 @@ import cn.worldwalker.game.wyqp.common.exception.BusinessException;
 import cn.worldwalker.game.wyqp.common.exception.ExceptionEnum;
 import cn.worldwalker.game.wyqp.common.result.Result;
 import cn.worldwalker.game.wyqp.common.roomlocks.RoomLockContainer;
+import cn.worldwalker.game.wyqp.common.rpc.PlatFormRpc;
 import cn.worldwalker.game.wyqp.common.rpc.WeiXinRpc;
 import cn.worldwalker.game.wyqp.common.utils.GameUtil;
 import cn.worldwalker.game.wyqp.common.utils.HttpClientUtils;
@@ -73,6 +67,8 @@ public abstract class BaseGameService {
 	
 	@Autowired
 	public WeiXinRpc weiXinRpc;
+	@Autowired
+	public PlatFormRpc platFormRpc;
 	
 	public Result login(String code, String deviceType, HttpServletRequest request) {
 		Result result = new Result();
@@ -118,16 +114,16 @@ public abstract class BaseGameService {
 	public Result login1(String userId, String code, String deviceType,HttpServletRequest request) {
 		Result result = new Result();
 		HashMap<String, String> map = new LinkedHashMap<String, String>();
-		map.put("gameid", "gameid" + userId);
-		map.put("username", "username" + userId);
+		map.put("gameid", Constant.luozongGameId);
+		map.put("username", userId);
 		map.put("sex", "");
-		map.put("password", "password" + userId);
+		map.put("password", userId);
 		map.put("ptype", "1");
-		map.put("promotername", "promotername" + userId);
-		map.put("nickname", "nickname" + userId);
+		map.put("promotername", userId);
+		map.put("nickname", userId);
 		map.put("headurl", "headurl");
-		map.put("ip", "ip");
-		map.put("port", "8081");
+		map.put("ip", IPUtil.getRemoteIp(request));
+		map.put("port", Constant.luozongPort);
 		String loginRes = "";
 		try {
 			loginRes = HttpClientUtils.postFormData(Constant.platFromLogin, map);

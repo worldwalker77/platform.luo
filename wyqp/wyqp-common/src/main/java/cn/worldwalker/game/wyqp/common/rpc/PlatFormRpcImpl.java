@@ -3,12 +3,14 @@ package cn.worldwalker.game.wyqp.common.rpc;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.springframework.stereotype.Component;
+
 import cn.worldwalker.game.wyqp.common.constant.Constant;
 import cn.worldwalker.game.wyqp.common.domain.base.PlatFormLoginResponse;
 import cn.worldwalker.game.wyqp.common.utils.HttpClientUtils;
 import cn.worldwalker.game.wyqp.common.utils.JsonUtil;
 import cn.worldwalker.game.wyqp.common.utils.MD5Util1;
-
+@Component
 public class PlatFormRpcImpl implements PlatFormRpc{
 
 	public static int DeductionDiamo(String applicationid, String applicationname,
@@ -19,10 +21,10 @@ public class PlatFormRpcImpl implements PlatFormRpc{
 		map.put("applicationname", applicationname);
 		map.put("gameid", gameid);
 		map.put("gamename", gamename);
-		map.put("clientip", clientip);
+		map.put("clientip", "120.76.29.142");
 		map.put("userId", userId + "");
 		map.put("Num", Num + "");
-		String signkey = MD5Util1.encryptByMD5(applicationid + userId + Num + "1234567890qwertyuiop" + "asdfghjklzxcvbnmpoiuytrewq");
+		String signkey = MD5Util1.encryptByMD5(applicationid + userId + Num + Constant.key + Constant.snkey);
 		System.out.println(signkey);
 		map.put("signkey", signkey);
 		String loginRes = "";
